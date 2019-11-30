@@ -1,0 +1,12 @@
+.swatch {
+  color: white;
+
+  &.light {
+    color: black;
+  }
+
+  & big {
+    font-size: 250%;
+    font-family: var(--monospace);
+  }
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+    <path fill="#1a5d8a" d="M0 0h64v64H0z"/>
+    <path fill="#fff" opacity=".842" d="M0 48h16v16H0z"/>
+    <path fill="#fff" opacity=".414" d="M16 48h16v16H16z"/>
+    <path fill="#fff" opacity=".882" d="M32 48h16v16H32z"/>
+    <path opacity=".016" d="M48 48h16v16H48z"/>
+    <path opacity=".311" d="M0 32h16v16H0z"/>
+    <path fill="#fff" opacity=".738" d="M16 32h16v16H16z"/>
+    <path opacity=".133" d="M32 32h16v16H32z"/>
+    <path opacity=".29" d="M48 32h16v16H48z"/>
+    <path opacity=".832" d="M0 16h16v16H0z"/>
+    <path opacity=".998" d="M16 16h16v16H16z"/>
+    <path opacity=".422" d="M32 16h16v16H32z"/>
+    <path opacity=".343" d="M48 16h16v16H48z"/>
+    <path fill="#fff" opacity=".189" d="M0 0h16v16H0z"/>
+    <path opacity=".675" d="M16 0h16v16H16z"/>
+    <path fill="#fff" opacity=".532" d="M32 0h16v16H32z"/>
+    <path fill="#fff" opacity=".706" d="M48 0h16v16H48z"/>
+</svg>

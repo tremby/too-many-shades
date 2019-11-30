@@ -1,22 +1,241 @@
-.App {
-  text-align: center;
+:root {
+  --monospace: 'Dejavu Sans Mono', 'Bitstream Vera Sans Mono', source-code-pro,
+    Menlo, Monaco, Consolas, 'Courier New', monospace;
+  --sansSerif: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+  --padding: 20px;
+
+  --blue: #61afef;
+  --yellow: #e5c07b;
+  --red: #e06c75;
+  --magenta: #c678dd;
+  --green: #98c379;
+  --cyan: #56b6c2;
+  --gray: #5c6370;
+  --bg: #111;
+  --fg: #bbb;
+  --altBg: #282c34;
+  --altFg: #dcdfe4;
+
+  /*
+   * Unfortunately it's not possible with PostCSS right now to do these mods in
+   * the rulesets themselves -- it won't look up the variables properly in all
+   * situations. Here's hoping color-mod gets added back to the CSS spec at some
+   * point.
+   */
+  --blueHi: color-mod(var(--blue) tint(30%));
+  --yellowHi: color-mod(var(--yellow) tint(30%));
+  --redHi: color-mod(var(--red) tint(30%));
+  --magentaHi: color-mod(var(--magenta) tint(30%));
+  --greenHi: color-mod(var(--green) tint(30%));
+  --cyanHi: color-mod(var(--cyan) tint(30%));
+  --grayHi: color-mod(var(--gray) tint(30%));
+
+  --fgShade25: color-mod(var(--bg) blend(var(--fg) 25%));
+  --fgShade50: color-mod(var(--bg) blend(var(--fg) 50%));
+  --fgShade75: color-mod(var(--bg) blend(var(--fg) 75%));
+
+  @media (prefers-color-scheme: light) {
+    --blue: #0184bc;
+    --yellow: #c18401;
+    --red: #e45649;
+    --magenta: #a626a4;
+    --green: #50a14f;
+    --cyan: #0997b3;
+    --gray: #a0a1a7;
+    --bg: white;
+    --fg: #111;
+    --altBg: #fafafa;
+    --altFg: #383a42;
+
+    /*
+     * The above colours are duplicated here literally, because the PostCSS
+     * color-mod function plugin seems to always look colours up from root
+     * rather than considering the local context.
+     */
+    --blueHi: color-mod(#0184bc shade(30%));
+    --yellowHi: color-mod(#c18401 shade(30%));
+    --redHi: color-mod(#e45649 shade(30%));
+    --magentaHi: color-mod(#a626a4 shade(30%));
+    --greenHi: color-mod(#50a14f shade(30%));
+    --cyanHi: color-mod(#0997b3 shade(30%));
+    --grayHi: color-mod(#a0a1a7 shade(30%));
+
+    --fgShade25: color-mod(white blend(#111 25%));
+    --fgShade50: color-mod(white blend(#111 50%));
+    --fgShade75: color-mod(white blend(#111 75%));
+  }
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+  margin: 0;
+  font-family: var(--sansSerif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: var(--bg);
+  color: var(--fg);
+
+  padding: 0;
+
+  line-height: 1.5;
 }
 
-.App-header {
-  background-color: #282c34;
+:focus {
+  outline: 3px dotted var(--cyan);
+  outline-offset: 3px;
+}
+
+h1,
+h2 {
+  margin-top: 0;
+  margin-bottom: 0.3em;
+}
+
+a {
+  color: var(--blue);
+
+  &:hover {
+    color: var(--blueHi);
+  }
+
+  &:visited {
+    color: var(--magenta);
+
+    &:hover {
+      color: var(--magentaHi);
+    }
+  }
+
+  &:active,
+  &:active:hover {
+    color: var(--red);
+  }
+}
+
+code {
+  font-family: var(--monospace);
+  padding: 0.5em;
+  border-radius: 0.2em;
+  background-color: var(--altBg);
+  color: var(--altFg);
+
+  @nest p & {
+    padding: 0.2em;
+  }
+}
+
+code .func {
+  color: var(--blue);
+}
+
+code .num {
+  color: var(--orange);
+}
+
+code .var {
+  color: var(--red);
+}
+
+fieldset {
+  margin: 1em 0;
+  border-color: var(--fgShade25);
+
+  & > legend {
+    padding: 0 0.5em;
+  }
+}
+
+dl {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: first baseline;
+  grid-gap: 0 0.5em;
+
+  & > dt {
+    text-align: right;
+  }
+
+  & > dd {
+    margin: 0;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   min-height: 100vh;
+  box-sizing: border-box;
+  padding: var(--padding) 0;
+}
+
+header,
+footer {
+  max-width: 40em;
+  text-align: justify;
+}
+
+main {
+  margin: 40px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-self: stretch;
 }
 
-.App-link {
-  color: #09d3ac;
+.swatches {
+  --shadow: color-mod(black alpha(50%));
+  @media (prefers-color-scheme: light) {
+    --shadow: color-mod(black alpha(20%));
+  }
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+  box-shadow: 0 0 20px var(--shadow);
+  margin: 20px 0;
+
+  & > * {
+    display: flex;
+    padding: 40px;
+
+    &:nth-child(1) {
+      justify-content: flex-end;
+    }
+    &:nth-child(2) {
+      justify-content: flex-start;
+    }
+    &:nth-child(3) {
+      justify-content: center;
+      grid-column: span 2;
+    }
+  }
+}
+
+.flexRow {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+
+  &.top {
+    align-items: flex-start;
+  }
+  &.baseline {
+    align-items: baseline;
+  }
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.padBox {
+  padding: 0 var(--padding);
 }
