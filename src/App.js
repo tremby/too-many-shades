@@ -22,7 +22,7 @@ function degreesError(a, b, map) {
 }
 
 function degreesErrorToString(degrees) {
-  return `${degrees.toFixed(2)}°`
+  return isNaN(degrees) ? '–' : `${degrees.toFixed(2)}°`
 }
 
 function mod(a, n) {
