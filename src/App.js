@@ -536,11 +536,12 @@ const App = () => {
                       ${capitalizationFunc(derivedResultName)}
                     </span>
                     : <span className="func">mix</span>(
+                    {type === 'tint' ? 'white' : 'black'},{' '}
                     <span className="var">
                       ${capitalizationFunc(derivedSourceName)}
                     </span>
-                    , {type === 'tint' ? 'white' : 'black'},{' '}
-                    <span className="num">{+(100 * amount).toFixed(1)}</span>%);
+                    , <span className="num">{+(100 * amount).toFixed(1)}</span>
+                    %);
                   </code>
                 </pre>
               </dd>
